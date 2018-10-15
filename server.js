@@ -13,6 +13,10 @@ var express = require('express'),
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 	
+	app.use((req, res) => {
+		res.status(404).send({url: req.originalUrl + ' not found'});
+	});
+	
 var routes = require('./api/routes/todoListRoutes');
 routes(app);
 	
